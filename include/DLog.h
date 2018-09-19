@@ -26,9 +26,9 @@ typedef enum
 extern "C" {
 #endif
 
-void DLogFlush();
 void DLogOutputMode(DLogMode logMode);
 void DLog(DLogLevel level, const char *tag, const char *format, ...);
+void DLogFlush();
 
 #ifdef __cplusplus
 }
