@@ -6,9 +6,8 @@
 #ifndef D_LOG_COMMON_H
 #define D_LOG_COMMON_H
 
-#define LOG_OUTPUT_LEVEL    DLOG_D
-#define TAG_APP             "DBase"
 #define LOG_BUF_SIZE        2048
+#define LOG_PATH_LENGTH     1024
 
 static const char *gLogLevelDes[] = {"Debug", "Info", "Warn", "Error"};
 

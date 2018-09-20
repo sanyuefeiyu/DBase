@@ -8,14 +8,14 @@
 #include "DLog.h"
 #include "DFile.h"
 
-#define LOG_FILE_FULL_NAME  "/sdcard/DLog.txt"
+static char gLogPath[LOG_PATH_LENGTH+1] = {0};
 
 void DLogOutput(DLogMode logMode, DLogLevel level, const char *tag, const char *buf)
 {
     if (logMode & DLOG_CONSOLE)
     {
         // write log to ddms
-        __android_log_print(level + 3, TAG_APP, "%s: %s", tag, buf);
+        __android_log_print(level + 3, tag, "%s", buf);
     }
 
     if (logMode & DLOG_FILE)
@@ -28,15 +28,15 @@ void DLogOutput(DLogMode logMode, DLogLevel level, const char *tag, const char *
 
         // write log to file
         char outputBuf[LOG_BUF_SIZE+256];
-        int size = snprintf(outputBuf, LOG_BUF_SIZE+256, "%04d-%02d-%02d %02d:%02d:%02d:%03ld [%s:%s] %s %s\r\n",
+        int size = snprintf(outputBuf, LOG_BUF_SIZE+256, "%04d-%02d-%02d %02d:%02d:%02d:%03ld %s|%s %s\r\n",
                             tm2.tm_year+1900, tm2.tm_mon+1, tm2.tm_mday, tm2.tm_hour, tm2.tm_min, tm2.tm_sec, tv.tv_usec/1000,
-                            TAG_APP, tag, gLogLevelDes[level], buf);
+                            gLogLevelDes[level], tag, buf);
         if (size <= 0)
         {
             return;
         }
 
-        FILE *fp = fopen(LOG_FILE_FULL_NAME, "ab+");
+        FILE *fp = fopen(gLogPath, "ab+");
         if (fp == NULL)
         {
             return;
@@ -46,7 +46,7 @@ void DLogOutput(DLogMode logMode, DLogLevel level, const char *tag, const char *
     }
 }
 
-DEXPORT void DLogFlush()
+DEXPORT void DLogSetOutputPath(const char *path)
 {
-    DFileFlush(LOG_FILE_FULL_NAME);
+    strncpy(gLogPath, path, LOG_PATH_LENGTH);
 }
