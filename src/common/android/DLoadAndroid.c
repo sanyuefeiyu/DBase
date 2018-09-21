@@ -1,11 +1,10 @@
 #include <stdlib.h>
 #include <dlfcn.h>
 #include "DExport.h"
+#include "DCommon.h"
 #include "DMisc.h"
 #include "DLog.h"
 #include "DLoad.h"
-
-#define TAG     "DLoad"
 
 DEXPORT void* DLoadOpen(const char *path)
 {
@@ -18,7 +17,7 @@ DEXPORT void* DLoadOpen(const char *path)
     DLog(DLOG_D, TAG, "DLoadOpen %s and result is %p", path, hDllLib);
     if (hDllLib == NULL)
     {
-        DMiscPrintError();
+        DMiscPrintError(DLOG_W);
     }
 
     return hDllLib;
@@ -35,7 +34,7 @@ DEXPORT void* DLoadGetSymbol(const void *hdl, const char *symbol)
     DLog(DLOG_D, TAG, "DLoadGetSymbol %p, %s and result is %p", hdl, symbol, proc);
     if (proc == NULL)
     {
-        DMiscPrintError();
+        DMiscPrintError(DLOG_W);
     }
 
     return proc;

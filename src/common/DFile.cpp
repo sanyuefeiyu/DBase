@@ -1,10 +1,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "DExport.h"
+#include "DCommon.h"
 #include "DFile.h"
 #include "DLog.h"
-
-#define TAG     "DFile"
 
 DEXPORT void DFileWrite(const char *path, const char *buff, int size)
 {

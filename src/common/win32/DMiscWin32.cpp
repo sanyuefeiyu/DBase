@@ -2,8 +2,6 @@
 #include "DLog.h"
 #include "DMisc.h"
 
-#define TAG     "DMisc"
-
 static LPSTR ConvertErrorCodeToString(DWORD ErrorCode)
 {
     HLOCAL LocalAddress=NULL;
@@ -12,8 +10,8 @@ static LPSTR ConvertErrorCodeToString(DWORD ErrorCode)
     return (LPSTR)LocalAddress;
 }
 
-DEXPORT void DMiscPrintError()
+DEXPORT void DMiscPrintError(DLogLevel level)
 {
     DWORD errorCode = GetLastError();
-    DLog(DLOG_W, TAG, "lastError is %d, %s", errorCode, ConvertErrorCodeToString(errorCode));
+    DLog(level, TAG, "lastError is %d, %s", errorCode, ConvertErrorCodeToString(errorCode));
 }

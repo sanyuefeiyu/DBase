@@ -1,13 +1,12 @@
 #include <string.h>
 #include <errno.h>
 #include "DExport.h"
+#include "DCommon.h"
 #include "DLog.h"
 #include "DMisc.h"
 
-#define TAG     "DMisc"
-
-DEXPORT void DMiscPrintError()
+DEXPORT void DMiscPrintError(DLogLevel level)
 {
-	int errorCode = errno;
-    DLog(DLOG_W, TAG, "lastError is %d, %s", errorCode, strerror(errorCode));
+    int errorCode = errno;
+    DLog(level, TAG, "lastError is %d, %s", errorCode, strerror(errorCode));
 }
