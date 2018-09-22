@@ -1,4 +1,5 @@
 #include <Windows.h>
+#include "DCommon.h"
 #include "DLog.h"
 #include "DMisc.h"
 

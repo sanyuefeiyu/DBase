@@ -1,9 +1,8 @@
 #include <Windows.h>
+#include "DCommon.h"
 #include "DMisc.h"
 #include "DLog.h"
 #include "DLoad.h"
-
-#define TAG     "DLoad"
 
 DEXPORT void* DLoadOpen(const char *path)
 {

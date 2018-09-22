@@ -5,8 +5,6 @@
 #include "DLog.h"
 #include "DFile.h"
 
-#define LOG_FILE_FULL_NAME  "D:\\DLog.txt"
-
 void DLogOutput(DLogMode logMode, DLogLevel level, const char *tag, const char *buf)
 {
     char outputBuf[LOG_BUF_SIZE + 256];
@@ -16,10 +14,10 @@ void DLogOutput(DLogMode logMode, DLogLevel level, const char *tag, const char *
     GetLocalTime(&lt);
 
     // date time pid tid level tag msg
-    int size = _snprintf(outputBuf, LOG_BUF_SIZE + 256, "%04d-%02d-%02d %02d:%02d:%02d:%03d [%d|%d] [%s:%s] %s %s\r\n",
+    int size = _snprintf(outputBuf, LOG_BUF_SIZE + 256, "%04d-%02d-%02d %02d:%02d:%02d:%03d [%d|%d] %s|%s %s\r\n",
                         lt.wYear, lt.wMonth, lt.wDay, lt.wHour, lt.wMinute, lt.wSecond, lt.wMilliseconds,
                         GetCurrentProcessId(), GetCurrentThreadId(),
-                        TAG_APP, tag, gLogLevelDes[level], buf);
+                        gLogLevelDes[level], tag, buf);
 
     if (size <= 0)
     {
@@ -34,7 +32,7 @@ void DLogOutput(DLogMode logMode, DLogLevel level, const char *tag, const char *
 
     if (logMode & DLOG_FILE)
     {
-        FILE *fp = fopen(LOG_FILE_FULL_NAME, "ab+");
+        FILE *fp = fopen(gLogPath, "ab+");
         if (fp == NULL)
         {
             return;
@@ -44,7 +42,7 @@ void DLogOutput(DLogMode logMode, DLogLevel level, const char *tag, const char *
     }
 }
 
-DEXPORT void DLogFlush()
+DEXPORT void DLogSetOutputPath(const char *path)
 {
-    DFileFlush(LOG_FILE_FULL_NAME);
+    strncpy(gLogPath, path, LOG_PATH_LENGTH);
 }
