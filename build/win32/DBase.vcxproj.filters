@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="include">
+      <UniqueIdentifier>{85f2ec61-1952-439d-abec-f9cd590a79df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{9a779a45-92ba-4f46-bbac-99ff5f2c3f7d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\common">
+      <UniqueIdentifier>{2f9dab48-ad15-413e-8157-4bad68f448b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\common\win32">
+      <UniqueIdentifier>{e915ee80-bc92-42fc-8b1a-eb168356b9de}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\include\DExport.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\DFile.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\DLoad.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\DLog.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\DMisc.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\DTime.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\common\DCommon.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\common\DLogCommon.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\common\DFile.cpp">
+      <Filter>src\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\common\DLog.cpp">
+      <Filter>src\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\common\win32\DLoadWin32.cpp">
+      <Filter>src\common\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\common\win32\DLogWin32.cpp">
+      <Filter>src\common\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\common\win32\DMiscWin32.cpp">
+      <Filter>src\common\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\common\win32\DTimeWin32.cpp">
+      <Filter>src\common\win32</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
