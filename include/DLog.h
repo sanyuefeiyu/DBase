@@ -6,6 +6,8 @@
 #ifndef D_LOG_H
 #define D_LOG_H
 
+#include "DExport.h"
+
 typedef enum
 {
     DLOG_D = 0,
@@ -26,9 +28,9 @@ typedef enum
 extern "C" {
 #endif
 
-void DLog(DLogLevel level, const char *tag, const char *format, ...);
-void DLogSetOutputControl(DLogLevel logLevel, DLogMode logMode);
-void DLogSetOutputPath(const char *path);
+DEXPORT void DLog(DLogLevel level, const char *tag, const char *format, ...);
+DEXPORT void DLogSetOutputControl(DLogLevel logLevel, DLogMode logMode);
+DEXPORT void DLogSetOutputPath(const char *path);
 
 #ifdef __cplusplus
 }

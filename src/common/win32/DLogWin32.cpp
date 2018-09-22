@@ -5,6 +5,8 @@
 #include "DLog.h"
 #include "DFile.h"
 
+static char gLogPath[LOG_PATH_LENGTH+1] = {0};
+
 void DLogOutput(DLogMode logMode, DLogLevel level, const char *tag, const char *buf)
 {
     char outputBuf[LOG_BUF_SIZE + 256];

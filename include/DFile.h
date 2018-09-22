@@ -6,12 +6,14 @@
 #ifndef D_FILE_H
 #define D_FILE_H
 
+#include "DExport.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-void DFileWrite(const char *path, const char *buff, int size);
-void DFileFlush(const char *path);
+DEXPORT void DFileWrite(const char *path, const char *buff, int size);
+DEXPORT void DFileFlush(const char *path);
 
 #ifdef __cplusplus
 }

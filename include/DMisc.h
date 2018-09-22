@@ -6,13 +6,14 @@
 #ifndef D_MISC_H
 #define D_MISC_H
 
+#include "DExport.h"
 #include "DLog.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-void DMiscPrintError(DLogLevel level);
+DEXPORT void DMiscPrintError(DLogLevel level);
 
 #ifdef __cplusplus
 }

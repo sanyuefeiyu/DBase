@@ -6,13 +6,15 @@
 #ifndef D_LOAD_H
 #define D_LOAD_H
 
+#include "DExport.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-void* DLoadOpen(const char *path);
-void* DLoadGetSymbol(const void *hdl, const char *symbol);
-void DLoadClose(const void *hdl);
+DEXPORT void* DLoadOpen(const char *path);
+DEXPORT void* DLoadGetSymbol(const void *hdl, const char *symbol);
+DEXPORT void DLoadClose(const void *hdl);
 
 #ifdef __cplusplus
 }

@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <time.h>
-#include "DExport.h"
 #include "DLog.h"
 #include "DLogCommon.h"
 

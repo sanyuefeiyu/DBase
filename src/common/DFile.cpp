@@ -1,6 +1,5 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "DExport.h"
 #include "DCommon.h"
 #include "DFile.h"
 #include "DLog.h"
