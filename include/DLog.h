@@ -36,4 +36,16 @@ DEXPORT void DLogSetOutputPath(const char *path);
 }
 #endif
 
+#ifdef WIN32
+#define DLodD(tag, format, ...)     DLog(DLOG_D, tag, format, ##__VA_ARGS__)
+#define DLodI(tag, format, ...)     DLog(DLOG_I, tag, format, ##__VA_ARGS__)
+#define DLodW(tag, format, ...)     DLog(DLOG_W, tag, format, ##__VA_ARGS__)
+#define DLodE(tag, format, ...)     DLog(DLOG_E, tag, format, ##__VA_ARGS__)
+#else
+#define DLodD(tag, format, arg ...)     DLog(DLOG_D, tag, format, ##arg)
+#define DLodI(tag, format, arg ...)     DLog(DLOG_I, tag, format, ##arg)
+#define DLodW(tag, format, arg ...)     DLog(DLOG_W, tag, format, ##arg)
+#define DLodE(tag, format, arg ...)     DLog(DLOG_E, tag, format, ##arg)
+#endif
+
 #endif /* D_LOG_H */
