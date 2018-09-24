@@ -20,6 +20,7 @@ LOCAL_MODULE    := DBase
 
 LOCAL_SRC_FILES += ../../../src/common/DFile.cpp
 LOCAL_SRC_FILES += ../../../src/common/DLog.cpp
+LOCAL_SRC_FILES += ../../../src/common/DErrCode.cpp
 LOCAL_SRC_FILES += ../../../src/common/android/DLogAndroid.cpp
 LOCAL_SRC_FILES += ../../../src/common/android/DTimeAndroid.cpp
 LOCAL_SRC_FILES += ../../../src/common/android/DLoadAndroid.c

@@ -125,5 +125,8 @@
     <ClCompile Include="..\..\src\alogrithm\base64\DBase64.cpp">
       <Filter>src\alogrithm\base64</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\common\DErrCode.cpp">
+      <Filter>src\common</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

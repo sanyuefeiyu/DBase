@@ -6,6 +6,8 @@
 #ifndef D_ERR_CODE_H
 #define D_ERR_CODE_H
 
+#include "DExport.h"
+
 typedef enum
 {
     DERR_OK = 0, 
@@ -13,5 +15,15 @@ typedef enum
     DERR_BAD_CONTENT_ENCODING,
     DERR_LAST //never use!
 } DErrCode;
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+DEXPORT const char* DGetErrMsg(DErrCode errCode);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* D_ERR_CODE_H */

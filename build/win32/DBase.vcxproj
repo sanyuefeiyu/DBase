@@ -36,6 +36,7 @@
     <ClCompile Include="..\..\src\alogrithm\safty\md5\cifs\cifs_block.c" />
     <ClCompile Include="..\..\src\alogrithm\safty\md5\cifs\MD5.c" />
     <ClCompile Include="..\..\src\alogrithm\safty\md5\DMD5.c" />
+    <ClCompile Include="..\..\src\common\DErrCode.cpp" />
     <ClCompile Include="..\..\src\common\DFile.cpp" />
     <ClCompile Include="..\..\src\common\DLog.cpp" />
     <ClCompile Include="..\..\src\common\win32\DLoadWin32.cpp" />
