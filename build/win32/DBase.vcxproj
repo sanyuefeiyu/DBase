@@ -11,16 +11,31 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\include\DBase64.h" />
+    <ClInclude Include="..\..\include\DErrCode.h" />
     <ClInclude Include="..\..\include\DExport.h" />
     <ClInclude Include="..\..\include\DFile.h" />
     <ClInclude Include="..\..\include\DLoad.h" />
     <ClInclude Include="..\..\include\DLog.h" />
+    <ClInclude Include="..\..\include\DMD5.h" />
     <ClInclude Include="..\..\include\DMisc.h" />
     <ClInclude Include="..\..\include\DTime.h" />
+    <ClInclude Include="..\..\src\alogrithm\safty\md5\cifs\auth_common.h" />
+    <ClInclude Include="..\..\src\alogrithm\safty\md5\cifs\cifs_block.h" />
+    <ClInclude Include="..\..\src\alogrithm\safty\md5\cifs\cifs_common.h" />
+    <ClInclude Include="..\..\src\alogrithm\safty\md5\cifs\cifs_errors.h" />
+    <ClInclude Include="..\..\src\alogrithm\safty\md5\cifs\cifs_system.h" />
+    <ClInclude Include="..\..\src\alogrithm\safty\md5\cifs\cifs_typedefs.h" />
+    <ClInclude Include="..\..\src\alogrithm\safty\md5\cifs\MD5.h" />
+    <ClInclude Include="..\..\src\alogrithm\safty\md5\cifs\platform\default\platform.h" />
     <ClInclude Include="..\..\src\common\DCommon.h" />
     <ClInclude Include="..\..\src\common\DLogCommon.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\src\alogrithm\base64\DBase64.cpp" />
+    <ClCompile Include="..\..\src\alogrithm\safty\md5\cifs\cifs_block.c" />
+    <ClCompile Include="..\..\src\alogrithm\safty\md5\cifs\MD5.c" />
+    <ClCompile Include="..\..\src\alogrithm\safty\md5\DMD5.c" />
     <ClCompile Include="..\..\src\common\DFile.cpp" />
     <ClCompile Include="..\..\src\common\DLog.cpp" />
     <ClCompile Include="..\..\src\common\win32\DLoadWin32.cpp" />

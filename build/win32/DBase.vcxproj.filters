@@ -13,6 +13,27 @@
     <Filter Include="src\common\win32">
       <UniqueIdentifier>{e915ee80-bc92-42fc-8b1a-eb168356b9de}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\alogrithm">
+      <UniqueIdentifier>{1e62b76c-3e6c-419c-b591-2e8c784f8862}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\alogrithm\safty">
+      <UniqueIdentifier>{7cc3f7ae-a850-45ac-b3bf-cfeeda7f5fd0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\alogrithm\safty\md5">
+      <UniqueIdentifier>{8fe95db4-9f57-461b-966c-52a934617818}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\alogrithm\safty\md5\cifs">
+      <UniqueIdentifier>{e346d7d2-1d6e-46cb-a65c-8dc066ace568}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\alogrithm\safty\md5\cifs\platform">
+      <UniqueIdentifier>{04c4dc8e-cf74-4705-9370-c8223bb2d586}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\alogrithm\safty\md5\cifs\platform\default">
+      <UniqueIdentifier>{fa5d5762-1a6c-4d21-b2bd-97c801efe688}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\alogrithm\base64">
+      <UniqueIdentifier>{8a36a71e-e62b-43bb-95f3-2f85078132ad}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\DExport.h">
@@ -39,6 +60,39 @@
     <ClInclude Include="..\..\src\common\DLogCommon.h">
       <Filter>src\common</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\include\DMD5.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\alogrithm\safty\md5\cifs\auth_common.h">
+      <Filter>src\alogrithm\safty\md5\cifs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\alogrithm\safty\md5\cifs\cifs_block.h">
+      <Filter>src\alogrithm\safty\md5\cifs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\alogrithm\safty\md5\cifs\cifs_common.h">
+      <Filter>src\alogrithm\safty\md5\cifs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\alogrithm\safty\md5\cifs\cifs_errors.h">
+      <Filter>src\alogrithm\safty\md5\cifs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\alogrithm\safty\md5\cifs\cifs_system.h">
+      <Filter>src\alogrithm\safty\md5\cifs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\alogrithm\safty\md5\cifs\cifs_typedefs.h">
+      <Filter>src\alogrithm\safty\md5\cifs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\alogrithm\safty\md5\cifs\MD5.h">
+      <Filter>src\alogrithm\safty\md5\cifs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\alogrithm\safty\md5\cifs\platform\default\platform.h">
+      <Filter>src\alogrithm\safty\md5\cifs\platform\default</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\DBase64.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\DErrCode.h">
+      <Filter>include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\common\DFile.cpp">
@@ -58,6 +112,18 @@
     </ClCompile>
     <ClCompile Include="..\..\src\common\win32\DTimeWin32.cpp">
       <Filter>src\common\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\alogrithm\safty\md5\cifs\cifs_block.c">
+      <Filter>src\alogrithm\safty\md5\cifs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\alogrithm\safty\md5\cifs\MD5.c">
+      <Filter>src\alogrithm\safty\md5\cifs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\alogrithm\safty\md5\DMD5.c">
+      <Filter>src\alogrithm\safty\md5</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\alogrithm\base64\DBase64.cpp">
+      <Filter>src\alogrithm\base64</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -22,23 +22,17 @@ void DLogOutput(DLogMode logMode, DLogLevel level, const char *tag, const char *
                         gLogLevelDes[level], tag, buf);
 
     if (size <= 0)
-    {
         return;
-    }
 
+    // write log to console
     if (logMode & DLOG_CONSOLE)
-    {
-        // write log to console
         OutputDebugStringA(outputBuf);
-    }
 
     if (logMode & DLOG_FILE)
     {
         FILE *fp = fopen(gLogPath, "ab+");
         if (fp == NULL)
-        {
             return;
-        }
         fwrite(outputBuf, size, 1, fp);
         fclose(fp);
     }

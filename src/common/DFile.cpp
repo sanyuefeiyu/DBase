@@ -7,9 +7,7 @@
 DEXPORT void DFileWrite(const char *path, const char *buff, int size)
 {
     if (path == NULL || buff == NULL || size <= 0)
-    {
         return;
-    }
 
     FILE *fp = fopen(path, "ab+");
     if (fp == NULL)

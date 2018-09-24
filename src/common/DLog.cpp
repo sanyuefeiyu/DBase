@@ -12,27 +12,19 @@ static DLogMode gLogMode = DLOG_CONSOLE;
 DEXPORT void DLogSetOutputControl(DLogLevel logLevel, DLogMode logMode)
 {
     if (logLevel >= DLOG_D && logLevel <= DLOG_E)
-    {
         gLogOutputlevel = logLevel;
-    }
 
     if (logMode >= DLOG_NONE && logMode <= DLOG_ALL)
-    {
         gLogMode = logMode;
-    }
 }
 
 DEXPORT void DLog(DLogLevel level, const char *tag, const char *format, ...)
 {
     if (level < DLOG_D || level > DLOG_E || level < gLogOutputlevel)
-    {
         return;
-    }
 
     if (!(gLogMode & DLOG_ALL))
-    {
         return;
-    }
 
     char buf[LOG_BUF_SIZE];
     va_list ap;
@@ -41,9 +33,7 @@ DEXPORT void DLog(DLogLevel level, const char *tag, const char *format, ...)
     va_end(ap);
 
     if (size <= 0)
-    {
         return;
-    }
 
     DLogOutput(gLogMode, level, tag, buf);
 }

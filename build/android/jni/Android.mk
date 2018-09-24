@@ -24,6 +24,10 @@ LOCAL_SRC_FILES += ../../../src/common/android/DLogAndroid.cpp
 LOCAL_SRC_FILES += ../../../src/common/android/DTimeAndroid.cpp
 LOCAL_SRC_FILES += ../../../src/common/android/DLoadAndroid.c
 LOCAL_SRC_FILES += ../../../src/common/android/DMiscAndroid.c
+LOCAL_SRC_FILES += ../../../src/alogrithm/base64/DBase64.cpp
+LOCAL_SRC_FILES += ../../../src/alogrithm/safty/md5/DMD5.c
+LOCAL_SRC_FILES += ../../../src/alogrithm/safty/md5/cifs/cifs_block.c
+LOCAL_SRC_FILES += ../../../src/alogrithm/safty/md5/cifs/md5.c
 
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../../include
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../../src/common
