@@ -93,6 +93,9 @@
     <ClInclude Include="..\..\include\DErrCode.h">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\common\DStd.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\common\DFile.cpp">

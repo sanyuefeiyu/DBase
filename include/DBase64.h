@@ -13,7 +13,9 @@
 extern "C" {
 #endif
 
-DErrCode DBase64Decode(unsigned char **dst, size_t *dstLen, const char *src);
+DEXPORT DErrCode DBase64Decode(unsigned char **dst, size_t *dstLen, const char *src);
+DEXPORT DErrCode DBase64Encode(char **dst, size_t *dstLen, const char *src, size_t srcLen);
+DEXPORT DErrCode DBase64UrlEncode(char **dst, size_t *dstLen, const char *src, size_t srcLen);
 
 #ifdef __cplusplus
 }

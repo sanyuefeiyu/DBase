@@ -30,6 +30,7 @@
     <ClInclude Include="..\..\src\alogrithm\safty\md5\cifs\platform\default\platform.h" />
     <ClInclude Include="..\..\src\common\DCommon.h" />
     <ClInclude Include="..\..\src\common\DLogCommon.h" />
+    <ClInclude Include="..\..\src\common\DStd.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\alogrithm\base64\DBase64.cpp" />
