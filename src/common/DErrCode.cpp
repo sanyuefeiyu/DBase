@@ -8,13 +8,13 @@ DEXPORT const char* DGetErrMsg(DErrCode errCode)
     switch (errCode)
     {
     case DERR_OK:
-        errMsg = "no error";
+        errMsg = "ok";
         break;
     case DERR_OUT_OF_MEMORY:
         errMsg = "no memory";
         break;
     case DERR_BAD_CONTENT_ENCODING:
-        errMsg = "invalid content format";
+        errMsg = "bad content encoding";
         break;
     default:
         errMsg = "unknown error";

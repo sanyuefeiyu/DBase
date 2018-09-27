@@ -10,10 +10,10 @@
 
 typedef enum
 {
-    DERR_OK = 0, 
+    DERR_OK = 0,
     DERR_OUT_OF_MEMORY,
     DERR_BAD_CONTENT_ENCODING,
-    DERR_LAST //never use!
+    DERR_LAST
 } DErrCode;
 
 #ifdef __cplusplus
