@@ -60,6 +60,8 @@ Java_com_example_hellojni_HelloJni_stringFromJNI( JNIEnv* env,
 #define ABI "unknown"
 #endif
 
+    DLogSetOutputControl(DLOG_D, DLOG_ALL);
+    DLogSetOutputPath("/sdcard/DLog.txt");
     DLog(DLOG_W, "MyTest", "%s", "hello world");
 
     return (*env)->NewStringUTF(env, "Hello from JNI !  Compiled with ABI " ABI ".");

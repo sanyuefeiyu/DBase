@@ -12,7 +12,7 @@ static char gLogPath[LOG_PATH_LENGTH+1] = {0};
 
 void DLogOutput(DLogMode logMode, DLogLevel level, const char *tag, const char *buf)
 {
-	// write log to ddms
+    // write log to ddms
     if (logMode & DLOG_CONSOLE)
         __android_log_print(level + 3, tag, "%s", buf);
 
@@ -26,8 +26,9 @@ void DLogOutput(DLogMode logMode, DLogLevel level, const char *tag, const char *
 
         // write log to file
         char outputBuf[LOG_BUF_SIZE+256];
-        int size = snprintf(outputBuf, LOG_BUF_SIZE+256, "%04d-%02d-%02d %02d:%02d:%02d:%03ld %s|%s %s\r\n",
+        int size = snprintf(outputBuf, LOG_BUF_SIZE+256, "%04d-%02d-%02d %02d:%02d:%02d:%03ld [%d|%d] %s|%s %s\r\n",
                             tm2.tm_year+1900, tm2.tm_mon+1, tm2.tm_mday, tm2.tm_hour, tm2.tm_min, tm2.tm_sec, tv.tv_usec/1000,
+                            getpid(), gettid(),
                             gLogLevelDes[level], tag, buf);
         if (size <= 0)
             return;
