@@ -24,37 +24,35 @@ static size_t DecodeQuantum(unsigned char *dst, const char *src)
     unsigned long i;
     const char *s;
 
-    for (i = 0, s = src; i < 4; i++, s++)
-    {
-        if (*s == '=')
-        {
+    for (i = 0, s = src; i < 4; i++, s++) {
+        if (*s == '=') {
             x = (x << 6);
             padding++;
-        }
-        else
-        {
+        } else {
             unsigned long v = 0;
             const char *p = base64;
 
-            while (*p && (*p != *s))
-            {
+            while (*p && (*p != *s)) {
                 v++;
                 p++;
             }
 
-            if(*p == *s)
+            if (*p == *s) {
                 x = (x << 6) + v;
-            else
+            } else {
                 return 0;
+            }
         }
     }
 
-    if (padding < 1)
+    if (padding < 1) {
         dst[2] = DUL2UC(x & 0xFFUL);
+    }
 
     x >>= 8;
-    if (padding < 2)
+    if (padding < 2) {
         dst[1] = DUL2UC(x & 0xFFUL);
+    }
 
     x >>= 8;
     dst[0] = DUL2UC(x & 0xFFUL);
@@ -69,26 +67,29 @@ DEXPORT DErrCode DBase64Decode(unsigned char **dst, size_t *dstLen, const char *
 
     //Check the length of the input string is valid
     size_t srcLen = strlen(src);
-    if (!srcLen || srcLen % 4)
+    if (!srcLen || srcLen % 4) {
         return DERR_BAD_CONTENT_ENCODING;
+    }
 
     //Find the position of any = padding characters
     size_t length = 0;
-    while ((src[length] != '=') && src[length])
+    while ((src[length] != '=') && src[length]) {
         length++;
+    }
 
     //A maximum of two = padding characters is allowed
     size_t padding = 0;
-    if (src[length] == '=')
-    {
+    if (src[length] == '=') {
         padding++;
-        if (src[length + 1] == '=')
+        if (src[length + 1] == '=') {
             padding++;
+        }
     }
 
     //Check the = padding characters weren't part way through the input
-    if (length + padding != srcLen)
+    if (length + padding != srcLen) {
         return DERR_BAD_CONTENT_ENCODING;
+    }
 
     //Calculate the number of quantums
     size_t numQuantums = srcLen / 4;
@@ -98,17 +99,16 @@ DEXPORT DErrCode DBase64Decode(unsigned char **dst, size_t *dstLen, const char *
 
     //Allocate our buffer including room for a zero terminator
     unsigned char *newStr = (unsigned char*)malloc(rawLen + 1);
-    if (!newStr)
+    if (!newStr) {
         return DERR_OUT_OF_MEMORY;
+    }
 
     unsigned char *pos = newStr;
 
     //Decode the quantums
-    for(size_t i = 0; i < numQuantums; i++)
-    {
+    for(size_t i = 0; i < numQuantums; i++) {
         size_t result = DecodeQuantum(pos, src);
-        if(!result)
-        {
+        if(!result) {
             free(newStr);
             return DERR_BAD_CONTENT_ENCODING;
         }
@@ -133,14 +133,16 @@ static DErrCode Base64Encode(const char *table64, const char *src, size_t srcLen
     *dstLen = 0;
 
     const char *indata = src;
-    if (!srcLen)
+    if (!srcLen) {
         srcLen = strlen(indata);
+    }
 
     char *output;
     char *base64data;
     base64data = output = (char*)malloc(srcLen * 4 / 3 + 4);
-    if (!output)
+    if (!output) {
         return  DERR_OUT_OF_MEMORY;
+    }
 
     /*
     * The base64 data needs to be created using the network encoding
@@ -162,19 +164,14 @@ static DErrCode Base64Encode(const char *table64, const char *src, size_t srcLen
     unsigned char ibuf[3];
     unsigned char obuf[4];
     int inputparts;
-    while (srcLen > 0)
-    {
-        for (int i = inputparts = 0; i < 3; i++)
-        {
-            if (srcLen > 0)
-            {
+    while (srcLen > 0) {
+        for (int i = inputparts = 0; i < 3; i++) {
+            if (srcLen > 0) {
                 inputparts++;
                 ibuf[i] = (unsigned char) *indata;
                 indata++;
                 srcLen--;
-            }
-            else
-            {
+            } else {
                 ibuf[i] = 0;
             }
         }
@@ -184,16 +181,13 @@ static DErrCode Base64Encode(const char *table64, const char *src, size_t srcLen
         obuf[2] = (unsigned char) (((ibuf[1] & 0x0F) << 2) | ((ibuf[2] & 0xC0) >> 6));
         obuf[3] = (unsigned char) (ibuf[2] & 0x3F);
 
-        switch (inputparts)
-        {
+        switch (inputparts) {
         case 1: //only one byte read
             snprintf(output, 5, "%c%c==", table64[obuf[0]], table64[obuf[1]]);
             break;
-
         case 2: //two bytes read
             snprintf(output, 5, "%c%c%c=", table64[obuf[0]], table64[obuf[1]], table64[obuf[2]]);
             break;
-
         default:
             snprintf(output, 5, "%c%c%c%c", table64[obuf[0]], table64[obuf[1]], table64[obuf[2]], table64[obuf[3]]);
             break;

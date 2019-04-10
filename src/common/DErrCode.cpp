@@ -5,8 +5,7 @@ DEXPORT const char* DGetErrMsg(DErrCode errCode)
 {
     const char *errMsg = NULL;
 
-    switch (errCode)
-    {
+    switch (errCode) {
     case DERR_OK:
         errMsg = "ok";
         break;

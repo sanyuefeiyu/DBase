@@ -16,8 +16,7 @@ struct DMD5Ctx
 DMD5Ctx* DMD5InitCtx()
 {
     DMD5Ctx *ctx = (DMD5Ctx*)malloc(sizeof(DMD5Ctx));
-    if (ctx == NULL)
-    {
+    if (ctx == NULL) {
         return NULL;
     }
 
@@ -29,16 +28,13 @@ void DMD5SumCtx(DMD5Ctx *ctx, const unsigned char *src, const int len)
 {
     int consumedSize = 0;
 
-    if (ctx == NULL || src == NULL || len <= 0)
-    {
+    if (ctx == NULL || src == NULL || len <= 0) {
         return;
     }
 
-    while (consumedSize < len)
-    {
+    while (consumedSize < len) {
         int size = len - consumedSize;
-        if (size >= MD5_BLOCK)
-        {
+        if (size >= MD5_BLOCK) {
             size = MD5_BLOCK;
         }
 
@@ -49,8 +45,7 @@ void DMD5SumCtx(DMD5Ctx *ctx, const unsigned char *src, const int len)
 
 void DMD5CloseCtx(DMD5Ctx *ctx, unsigned char *dst)
 {
-    if (ctx == NULL || dst == NULL)
-    {
+    if (ctx == NULL || dst == NULL) {
         return;
     }
 
@@ -59,8 +54,7 @@ void DMD5CloseCtx(DMD5Ctx *ctx, unsigned char *dst)
 
 void DMD5ReleaseCtx(DMD5Ctx **ctx)
 {
-    if (ctx == NULL || *ctx == NULL)
-    {
+    if (ctx == NULL || *ctx == NULL) {
         return;
     }
 
@@ -79,37 +73,32 @@ void DMD5SumFile(unsigned char *dst, const char *filePath)
     unsigned char src[READ_SIZE];
     DMD5Ctx *ctx = NULL;
 
-    if (dst == NULL || filePath == NULL)
-    {
+    if (dst == NULL || filePath == NULL) {
         return;
     }
 
     FILE *fp = fopen(filePath, "rb");
-    if (fp == NULL)
-    {
+    if (fp == NULL) {
         DLogW(TAG, "open file failed, filePath=[%s]", filePath);
         return;
     }
     fseek(fp, 0, SEEK_END);
     fileSize = ftell(fp);
     fseek(fp, 0, SEEK_SET);
-    if (fileSize <= 0)
-    {
+    if (fileSize <= 0) {
         DLogW(TAG, "file size is 0, filePath=[%s]", filePath);
         fclose(fp);
         return;
     }
 
     ctx = DMD5InitCtx();
-    if (ctx == NULL)
-    {
+    if (ctx == NULL) {
         fclose(fp);
         return;
     }
 
     readSize = fread(src, 1, READ_SIZE, fp);
-    while (readSize > 0)
-    {
+    while (readSize > 0) {
         DMD5SumCtx(ctx, src, readSize);
         readSize = fread(src, 1, READ_SIZE, fp);
     }

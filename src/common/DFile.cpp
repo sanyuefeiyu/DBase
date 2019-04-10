@@ -6,12 +6,12 @@
 
 DEXPORT void DFileWrite(const char *path, const char *buff, int size)
 {
-    if (path == NULL || buff == NULL || size <= 0)
+    if (path == NULL || buff == NULL || size <= 0) {
         return;
+    }
 
     FILE *fp = fopen(path, "ab+");
-    if (fp == NULL)
-    {
+    if (fp == NULL) {
         DLog(DLOG_W, TAG, "open file failed, path is %s", path);
         return;
     }
@@ -23,8 +23,7 @@ DEXPORT void DFileWrite(const char *path, const char *buff, int size)
 DEXPORT void DFileFlush(const char *path)
 {
     FILE *fp = fopen(path, "wb+");
-    if (fp == NULL)
-    {
+    if (fp == NULL) {
         DLog(DLOG_W, TAG, "flush file failed, path is %s", path);
         return;
     }

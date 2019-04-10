@@ -19,20 +19,24 @@ void DLogOutput(DLogMode logMode, DLogLevel level, const char *tag, const char *
     int size = _snprintf(outputBuf, LOG_BUF_SIZE + 256, "%04d-%02d-%02d %02d:%02d:%02d:%03d [%d|%d] %s|%s %s\r\n",
                         lt.wYear, lt.wMonth, lt.wDay, lt.wHour, lt.wMinute, lt.wSecond, lt.wMilliseconds,
                         GetCurrentProcessId(), GetCurrentThreadId(),
-                        gLogLevelDes[level], tag, buf);
+                        gLogLevelDes[level], tag,
+                        buf);
 
-    if (size <= 0)
+    if (size <= 0) {
         return;
+    }
 
     // write log to console
-    if (logMode & DLOG_CONSOLE)
+    if (logMode & DLOG_CONSOLE) {
         OutputDebugStringA(outputBuf);
+    }
 
-    if (logMode & DLOG_FILE)
-    {
+    // write log to file
+    if (logMode & DLOG_FILE) {
         FILE *fp = fopen(gLogPath, "ab+");
-        if (fp == NULL)
+        if (fp == NULL) {
             return;
+        }
         fwrite(outputBuf, size, 1, fp);
         fclose(fp);
     }
