@@ -29,7 +29,8 @@ void DLogOutput(DLogMode logMode, DLogLevel level, const char *tag, const char *
         int size = snprintf(outputBuf, LOG_BUF_SIZE+256, "%04d-%02d-%02d %02d:%02d:%02d:%03ld [%d|%d] %s|%s %s\r\n",
                             tm2.tm_year+1900, tm2.tm_mon+1, tm2.tm_mday, tm2.tm_hour, tm2.tm_min, tm2.tm_sec, tv.tv_usec/1000,
                             getpid(), gettid(),
-                            gLogLevelDes[level], tag, buf);
+                            gLogLevelDes[level], tag,
+							buf);
         if (size <= 0) {
             return;
         }
@@ -38,7 +39,6 @@ void DLogOutput(DLogMode logMode, DLogLevel level, const char *tag, const char *
         if (fp == NULL) {
             return;
         }
-
         fwrite(outputBuf, size, 1, fp);
         fclose(fp);
     }
