@@ -90,11 +90,11 @@
     <ClInclude Include="..\..\include\DBase64.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\DErrCode.h">
-      <Filter>include</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\common\DStd.h">
       <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\DError.h">
+      <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -128,7 +128,7 @@
     <ClCompile Include="..\..\src\alogrithm\base64\DBase64.cpp">
       <Filter>src\alogrithm\base64</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\common\DErrCode.cpp">
+    <ClCompile Include="..\..\src\common\DError.cpp">
       <Filter>src\common</Filter>
     </ClCompile>
   </ItemGroup>

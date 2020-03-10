@@ -8,12 +8,19 @@
 
 #include "DLog.h"
 #include "DMD5.h"
+#include "DFile.h"
 
 #define TAG "DBaseTest"
 
 int _tmain(int argc, _TCHAR* argv[])
 {
     DLogD(TAG, "%s", "hello world");
+
+    char *buf;
+    int size;
+    DFileRead("D:\\adb_pull_rf.bat", &buf, &size);
+    DFileWrite("d:\\out.xxx", buf, size);
+    free(buf);
 
     //Test:MD5
     unsigned char md5[256] = { 0 };

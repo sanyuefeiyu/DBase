@@ -60,7 +60,7 @@ static size_t DecodeQuantum(unsigned char *dst, const char *src)
     return 3 - padding;
 }
 
-DEXPORT DErrCode DBase64Decode(unsigned char **dst, size_t *dstLen, const char *src)
+DEXPORT DError DBase64Decode(unsigned char **dst, size_t *dstLen, const char *src)
 {
     *dst = NULL;
     *dstLen = 0;
@@ -100,7 +100,7 @@ DEXPORT DErrCode DBase64Decode(unsigned char **dst, size_t *dstLen, const char *
     //Allocate our buffer including room for a zero terminator
     unsigned char *newStr = (unsigned char*)malloc(rawLen + 1);
     if (!newStr) {
-        return DERR_OUT_OF_MEMORY;
+        return DERR_NO_MEMORY;
     }
 
     unsigned char *pos = newStr;
@@ -127,7 +127,7 @@ DEXPORT DErrCode DBase64Decode(unsigned char **dst, size_t *dstLen, const char *
     return DERR_OK;
 }
 
-static DErrCode Base64Encode(const char *table64, const char *src, size_t srcLen, char **dst, size_t *dstLen)
+static DError Base64Encode(const char *table64, const char *src, size_t srcLen, char **dst, size_t *dstLen)
 {
     *dst = NULL;
     *dstLen = 0;
@@ -141,7 +141,7 @@ static DErrCode Base64Encode(const char *table64, const char *src, size_t srcLen
     char *base64data;
     base64data = output = (char*)malloc(srcLen * 4 / 3 + 4);
     if (!output) {
-        return  DERR_OUT_OF_MEMORY;
+        return  DERR_NO_MEMORY;
     }
 
     /*
@@ -149,7 +149,7 @@ static DErrCode Base64Encode(const char *table64, const char *src, size_t srcLen
     * not the host encoding.  And we can't change the actual input
     * so we copy it to a buffer, translate it, and use that instead.
     */
-    DErrCode result;
+    DError result;
     // char *convbuf = NULL;
     // //result = Curl_convert_clone(data, indata, srcLen, &convbuf);
     // if (result)
@@ -209,12 +209,12 @@ static DErrCode Base64Encode(const char *table64, const char *src, size_t srcLen
     return DERR_OK;
 }
 
-DEXPORT DErrCode DBase64Encode(char **dst, size_t *dstLen, const char *src, size_t srcLen)
+DEXPORT DError DBase64Encode(char **dst, size_t *dstLen, const char *src, size_t srcLen)
 {
     return Base64Encode(base64, src, srcLen, dst, dstLen);
 }
 
-DEXPORT DErrCode DBase64UrlEncode(char **dst, size_t *dstLen, const char *src, size_t srcLen)
+DEXPORT DError DBase64UrlEncode(char **dst, size_t *dstLen, const char *src, size_t srcLen)
 {
     return Base64Encode(base64url, src, srcLen, dst, dstLen);
 }

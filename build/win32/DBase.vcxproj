@@ -12,7 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\DBase64.h" />
-    <ClInclude Include="..\..\include\DErrCode.h" />
+    <ClInclude Include="..\..\include\DError.h" />
     <ClInclude Include="..\..\include\DExport.h" />
     <ClInclude Include="..\..\include\DFile.h" />
     <ClInclude Include="..\..\include\DLoad.h" />
@@ -37,7 +37,7 @@
     <ClCompile Include="..\..\src\alogrithm\safty\md5\cifs\cifs_block.c" />
     <ClCompile Include="..\..\src\alogrithm\safty\md5\cifs\MD5.c" />
     <ClCompile Include="..\..\src\alogrithm\safty\md5\DMD5.c" />
-    <ClCompile Include="..\..\src\common\DErrCode.cpp" />
+    <ClCompile Include="..\..\src\common\DError.cpp" />
     <ClCompile Include="..\..\src\common\DFile.cpp" />
     <ClCompile Include="..\..\src\common\DLog.cpp" />
     <ClCompile Include="..\..\src\common\win32\DLoadWin32.cpp" />
