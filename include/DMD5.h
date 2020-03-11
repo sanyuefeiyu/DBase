@@ -16,8 +16,9 @@ extern "C" {
 
 DEXPORT DMD5Ctx* DMD5InitCtx();
 DEXPORT void DMD5SumCtx(DMD5Ctx *ctx, const unsigned char *src, const int len);
-DEXPORT void DMD5CloseCtx(DMD5Ctx *ctx, unsigned char *dst );
+DEXPORT void DMD5CloseCtx(DMD5Ctx *ctx, unsigned char *dst);
 DEXPORT void DMD5ReleaseCtx(DMD5Ctx **ctx);
+
 DEXPORT void DMD5Sum(unsigned char *dst, const unsigned char *src, const int len);
 DEXPORT void DMD5SumFile(unsigned char *dst, const char *filePath);
 

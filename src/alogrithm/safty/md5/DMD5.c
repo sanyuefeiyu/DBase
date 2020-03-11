@@ -6,14 +6,14 @@
 #include "./cifs/MD5.h"
 
 #define MD5_BLOCK   64
-#define READ_SIZE   (2*1024)
+#define READ_SIZE   (4*1024)
 
 struct DMD5Ctx
 {
     auth_md5Ctx cifs_ctx[1];
 };
 
-DMD5Ctx* DMD5InitCtx()
+DEXPORT DMD5Ctx* DMD5InitCtx()
 {
     DMD5Ctx *ctx = (DMD5Ctx*)malloc(sizeof(DMD5Ctx));
     if (ctx == NULL) {
@@ -24,7 +24,7 @@ DMD5Ctx* DMD5InitCtx()
     return ctx;
 }
 
-void DMD5SumCtx(DMD5Ctx *ctx, const unsigned char *src, const int len)
+DEXPORT void DMD5SumCtx(DMD5Ctx *ctx, const unsigned char *src, const int len)
 {
     int consumedSize = 0;
 
@@ -43,7 +43,7 @@ void DMD5SumCtx(DMD5Ctx *ctx, const unsigned char *src, const int len)
     }
 }
 
-void DMD5CloseCtx(DMD5Ctx *ctx, unsigned char *dst)
+DEXPORT void DMD5CloseCtx(DMD5Ctx *ctx, unsigned char *dst)
 {
     if (ctx == NULL || dst == NULL) {
         return;
@@ -52,7 +52,7 @@ void DMD5CloseCtx(DMD5Ctx *ctx, unsigned char *dst)
     auth_md5CloseCtx(ctx->cifs_ctx, dst);
 }
 
-void DMD5ReleaseCtx(DMD5Ctx **ctx)
+DEXPORT void DMD5ReleaseCtx(DMD5Ctx **ctx)
 {
     if (ctx == NULL || *ctx == NULL) {
         return;
@@ -61,12 +61,12 @@ void DMD5ReleaseCtx(DMD5Ctx **ctx)
     free(*ctx);
 }
 
-void DMD5Sum(unsigned char *dst, const unsigned char *src, const int len)
+DEXPORT void DMD5Sum(unsigned char *dst, const unsigned char *src, const int len)
 {
     auth_md5Sum(dst, src, len);
 }
 
-void DMD5SumFile(unsigned char *dst, const char *filePath)
+DEXPORT void DMD5SumFile(unsigned char *dst, const char *filePath)
 {
     long fileSize = 0;
     long readSize = 0;

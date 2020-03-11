@@ -9,24 +9,22 @@
 #include "DLog.h"
 #include "DMD5.h"
 #include "DFile.h"
+#include "DTime.h"
 
 #define TAG "DBaseTest"
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-    DLogD(TAG, "%s", "hello world");
-
-    char *buf;
-    int size;
-    DFileRead("D:\\adb_pull_rf.bat", &buf, &size);
-    DFileWrite("d:\\out.xxx", buf, size);
-    free(buf);
+    DLogD(TAG, "begin");
+    long long startTick = DTimeGetTick();
 
     //Test:MD5
     unsigned char md5[256] = { 0 };
     unsigned char src[] = "hello,world";
     DMD5Sum(md5, src, strlen((char*)src));
     DLogD(TAG, "MD5=[%s]", md5);
+
+    DLogD(TAG, "end, const time=%lld", DTimeGetTick() - startTick);
 
 	return 0;
 }
