@@ -29,8 +29,6 @@ extern "C" {
 #endif
 
 DEXPORT void DLog(DLogLevel level, const char *tag, const char *format, ...);
-DEXPORT void DLogSetOutputControl(DLogLevel logLevel, DLogMode logMode);
-DEXPORT void DLogSetOutputPath(const char *path);
 
 #ifdef __cplusplus
 }

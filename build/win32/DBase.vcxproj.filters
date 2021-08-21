@@ -102,6 +102,12 @@
     <ClInclude Include="..\..\include\DExport.h">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\include\base\DBase.h">
+      <Filter>include\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\common\DLogInternal.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\common\DFile.cpp">
@@ -136,6 +142,9 @@
     </ClCompile>
     <ClCompile Include="..\..\src\alogrithm\safty\md5\DMD5.cpp">
       <Filter>src\alogrithm\safty\md5</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\common\DBase.cpp">
+      <Filter>src\common</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

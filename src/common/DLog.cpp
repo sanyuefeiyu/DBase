@@ -1,15 +1,16 @@
 #include <cstdio>
 #include <cstdarg>
 #include <ctime>
-#include "DLog.h"
 #include "DLogCommon.h"
+#include "DLogInternal.h"
+#include "DLog.h"
 
 extern void DLogOutput(DLogMode logMode, DLogLevel level, const char *tag, const char *buf);
 
 static DLogLevel gLogOutputlevel = DLOG_D;
 static DLogMode gLogMode = DLOG_CONSOLE;
 
-DEXPORT void DLogSetOutputControl(DLogLevel logLevel, DLogMode logMode)
+void DLogSetOutputControl(DLogLevel logLevel, DLogMode logMode)
 {
     if (logLevel >= DLOG_D && logLevel <= DLOG_E) {
         gLogOutputlevel = logLevel;

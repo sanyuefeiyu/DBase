@@ -3,6 +3,7 @@
 #include <windows.h>
 #include "DFile.h"
 #include "DLogCommon.h"
+#include "DLogInternal.h"
 #include "DLog.h"
 
 static char gLogPath[LOG_PATH_LENGTH + 1] = { 0 };
@@ -40,7 +41,7 @@ void DLogOutput(DLogMode logMode, DLogLevel level, const char *tag, const char *
     }
 }
 
-DEXPORT void DLogSetOutputPath(const char *path)
+void DLogSetOutputPath(const char *path)
 {
     strncpy(gLogPath, path, LOG_PATH_LENGTH);
 }
