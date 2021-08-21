@@ -36,7 +36,7 @@
     <ClCompile Include="..\..\src\alogrithm\base64\DBase64.cpp" />
     <ClCompile Include="..\..\src\alogrithm\safty\md5\cifs\cifs_block.c" />
     <ClCompile Include="..\..\src\alogrithm\safty\md5\cifs\MD5.c" />
-    <ClCompile Include="..\..\src\alogrithm\safty\md5\DMD5.c" />
+    <ClCompile Include="..\..\src\alogrithm\safty\md5\DMD5.cpp" />
     <ClCompile Include="..\..\src\common\DError.cpp" />
     <ClCompile Include="..\..\src\common\DFile.cpp" />
     <ClCompile Include="..\..\src\common\DLog.cpp" />

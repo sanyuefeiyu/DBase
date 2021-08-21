@@ -1,45 +1,45 @@
-#include <Windows.h>
+#include <windows.h>
 #include "DCommon.h"
 #include "DMisc.h"
 #include "DLog.h"
 #include "DLoad.h"
 
-DEXPORT void* DLoadOpen(const char *path)
+DEXPORT void *DLoadOpen(const char *path)
 {
-    if (path == NULL) {
-        return NULL;
+    if (path == nullptr) {
+        return nullptr;
     }
 
     HMODULE hDllLib = LoadLibrary(path);
-    DLog(DLOG_D, TAG, "DLoadOpen %s and result is %p", path, hDllLib);
-    if (hDllLib == NULL) {
+    DLogD(TAG, "DLoadOpen %s and result is %p", path, hDllLib);
+    if (hDllLib == nullptr) {
         DMiscPrintError(DLOG_W);
     }
 
     return hDllLib;
 }
 
-DEXPORT void* DLoadGetSymbol(const void *handle, const char *symbol)
+DEXPORT void *DLoadGetSymbol(const void *handle, const char *symbol)
 {
-    if (handle == NULL || symbol == NULL) {
-        return NULL;
+    if (handle == nullptr || symbol == nullptr) {
+        return nullptr;
     }
 
     FARPROC proc = GetProcAddress((HMODULE)handle, symbol);
-    DLog(DLOG_D, TAG, "DLoadGetSymbol %p, %s and result is %p", handle, symbol, proc);
-    if (proc == NULL) {
+    DLogD(TAG, "DLoadGetSymbol %p, %s and result is %p", handle, symbol, proc);
+    if (proc == nullptr) {
         DMiscPrintError(DLOG_W);
     }
 
     return proc;
 }
 
-DEXPORT void DLoadClose(const void *hdl)
+DEXPORT void DLoadClose(const void *handle)
 {
-    if (hdl == NULL) {
+    if (handle == nullptr) {
         return;
     }
 
-    DLog(DLOG_D, TAG, "DLoadClose %p", hdl);
-    FreeLibrary((HMODULE)hdl);
+    DLogD(TAG, "DLoadClose %p", handle);
+    FreeLibrary((HMODULE)handle);
 }

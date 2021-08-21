@@ -1,9 +1,8 @@
-#include <stdlib.h>
 #include "DError.h"
 
-DEXPORT const char* DGetErrMsg(DError errCode)
+DEXPORT const char *DGetErrMsg(DError errCode)
 {
-    const char *errMsg = NULL;
+    const char *errMsg = nullptr;
 
     switch (errCode) {
     case DERR_OK:

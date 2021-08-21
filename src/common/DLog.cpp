@@ -1,10 +1,10 @@
-#include <stdio.h>
-#include <stdarg.h>
-#include <time.h>
+#include <cstdio>
+#include <cstdarg>
+#include <ctime>
 #include "DLog.h"
 #include "DLogCommon.h"
 
-void DLogOutput(DLogMode logMode, DLogLevel level, const char *tag, const char *buf);
+extern void DLogOutput(DLogMode logMode, DLogLevel level, const char *tag, const char *buf);
 
 static DLogLevel gLogOutputlevel = DLOG_D;
 static DLogMode gLogMode = DLOG_CONSOLE;

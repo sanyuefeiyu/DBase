@@ -8,4 +8,4 @@
 
 #define TAG     "DBase"
 
-#endif /* D_COMMON_H */
+#endif // D_COMMON_H

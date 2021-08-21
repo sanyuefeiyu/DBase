@@ -1,9 +1,12 @@
-#include <stdlib.h>
-#include <stdio.h>
+#include <cstdlib>
+#include <cstdio>
+extern "C" {
+#include "./cifs/MD5.h"
+}
+
 #include "DCommon.h"
 #include "DLog.h"
 #include "DMD5.h"
-#include "./cifs/MD5.h"
 
 #define MD5_BLOCK   64
 #define READ_SIZE   (4*1024)
@@ -13,11 +16,11 @@ struct DMD5Ctx
     auth_md5Ctx cifs_ctx[1];
 };
 
-DEXPORT DMD5Ctx* DMD5InitCtx()
+DEXPORT DMD5Ctx *DMD5InitCtx()
 {
-    DMD5Ctx *ctx = (DMD5Ctx*)malloc(sizeof(DMD5Ctx));
-    if (ctx == NULL) {
-        return NULL;
+    DMD5Ctx *ctx = new DMD5Ctx;
+    if (ctx == nullptr) {
+        return nullptr;
     }
 
     auth_md5InitCtx(ctx->cifs_ctx);
@@ -28,7 +31,7 @@ DEXPORT void DMD5SumCtx(DMD5Ctx *ctx, const unsigned char *src, const int len)
 {
     int consumedSize = 0;
 
-    if (ctx == NULL || src == NULL || len <= 0) {
+    if (ctx == nullptr || src == nullptr || len <= 0) {
         return;
     }
 
@@ -45,7 +48,7 @@ DEXPORT void DMD5SumCtx(DMD5Ctx *ctx, const unsigned char *src, const int len)
 
 DEXPORT void DMD5CloseCtx(DMD5Ctx *ctx, unsigned char *dst)
 {
-    if (ctx == NULL || dst == NULL) {
+    if (ctx == nullptr || dst == nullptr) {
         return;
     }
 
@@ -54,11 +57,11 @@ DEXPORT void DMD5CloseCtx(DMD5Ctx *ctx, unsigned char *dst)
 
 DEXPORT void DMD5ReleaseCtx(DMD5Ctx **ctx)
 {
-    if (ctx == NULL || *ctx == NULL) {
+    if (ctx == nullptr || *ctx == nullptr) {
         return;
     }
 
-    free(*ctx);
+    delete *ctx;
 }
 
 DEXPORT void DMD5Sum(unsigned char *dst, const unsigned char *src, const int len)
@@ -71,14 +74,14 @@ DEXPORT void DMD5SumFile(unsigned char *dst, const char *filePath)
     long fileSize = 0;
     long readSize = 0;
     unsigned char src[READ_SIZE];
-    DMD5Ctx *ctx = NULL;
+    DMD5Ctx *ctx = nullptr;
 
-    if (dst == NULL || filePath == NULL) {
+    if (dst == nullptr || filePath == nullptr) {
         return;
     }
 
     FILE *fp = fopen(filePath, "rb");
-    if (fp == NULL) {
+    if (fp == nullptr) {
         DLogW(TAG, "open file failed, filePath=[%s]", filePath);
         return;
     }
@@ -92,7 +95,7 @@ DEXPORT void DMD5SumFile(unsigned char *dst, const char *filePath)
     }
 
     ctx = DMD5InitCtx();
-    if (ctx == NULL) {
+    if (ctx == nullptr) {
         fclose(fp);
         return;
     }

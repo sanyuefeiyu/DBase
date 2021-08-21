@@ -1,11 +1,11 @@
-#include <stdio.h>
-#include <stdarg.h>
-#include "windows.h"
+#include <cstdio>
+#include <cstdarg>
+#include <windows.h>
+#include "DFile.h"
 #include "DLogCommon.h"
 #include "DLog.h"
-#include "DFile.h"
 
-static char gLogPath[LOG_PATH_LENGTH+1] = {0};
+static char gLogPath[LOG_PATH_LENGTH + 1] = { 0 };
 
 void DLogOutput(DLogMode logMode, DLogLevel level, const char *tag, const char *buf)
 {
@@ -17,10 +17,10 @@ void DLogOutput(DLogMode logMode, DLogLevel level, const char *tag, const char *
 
     // date time pid tid level tag msg
     int size = _snprintf(outputBuf, LOG_BUF_SIZE + 256, "%04d-%02d-%02d %02d:%02d:%02d:%03d [%d|%d] %s|%s %s\r\n",
-                        lt.wYear, lt.wMonth, lt.wDay, lt.wHour, lt.wMinute, lt.wSecond, lt.wMilliseconds,
-                        GetCurrentProcessId(), GetCurrentThreadId(),
-                        gLogLevelDes[level], tag,
-                        buf);
+        lt.wYear, lt.wMonth, lt.wDay, lt.wHour, lt.wMinute, lt.wSecond, lt.wMilliseconds,
+        GetCurrentProcessId(), GetCurrentThreadId(),
+        gLogLevelDes[level], tag,
+        buf);
 
     if (size <= 0) {
         return;

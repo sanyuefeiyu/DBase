@@ -1,5 +1,5 @@
-#include "windows.h"
-#include "mmsystem.h"
+#include <windows.h>
+#include <mmsystem.h>
 #include "DTime.h"
 
 #pragma comment(lib,"winmm.lib")

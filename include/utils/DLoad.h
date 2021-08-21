@@ -12,8 +12,8 @@
 extern "C" {
 #endif
 
-DEXPORT void* DLoadOpen(const char *path);
-DEXPORT void* DLoadGetSymbol(const void *handle, const char *symbol);
+DEXPORT void *DLoadOpen(const char *path);
+DEXPORT void *DLoadGetSymbol(const void *handle, const char *symbol);
 DEXPORT void DLoadClose(const void *handle);
 
 #ifdef __cplusplus

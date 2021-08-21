@@ -128,14 +128,14 @@
     <ClCompile Include="..\..\src\alogrithm\safty\md5\cifs\MD5.c">
       <Filter>src\alogrithm\safty\md5\cifs</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\alogrithm\safty\md5\DMD5.c">
-      <Filter>src\alogrithm\safty\md5</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\alogrithm\base64\DBase64.cpp">
       <Filter>src\alogrithm\base64</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\common\DError.cpp">
       <Filter>src\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\alogrithm\safty\md5\DMD5.cpp">
+      <Filter>src\alogrithm\safty\md5</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

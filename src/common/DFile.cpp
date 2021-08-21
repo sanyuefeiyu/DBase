@@ -1,18 +1,17 @@
-#include <stdlib.h>
-#include <stdio.h>
+#include <cstdio>
 #include "DCommon.h"
 #include "DLog.h"
 #include "DFile.h"
 
-DEXPORT DError DFileRead(const char *path, char **buf, int *size)
+DEXPORT DError DFileRead(const char *path, char **buf, int32_t *size)
 {
-    if (path == NULL || buf == NULL || size == NULL) {
+    if (path == nullptr || buf == nullptr || size == nullptr) {
         return DERR_INVALID_ARGS;
     }
 
     FILE *fp = fopen(path, "rb+");
-    if (fp == NULL) {
-        DLog(DLOG_W, TAG, "open file failed, path is %s", path);
+    if (fp == nullptr) {
+        DLogW(TAG, "open file failed, path is %s", path);
         return DERR_INVALID_PATH;
     }
 
@@ -24,14 +23,14 @@ DEXPORT DError DFileRead(const char *path, char **buf, int *size)
         return DERR_EMPTY_FILE;
     }
 
-    char *tempBuf = (char*)malloc(fileSize);;
-    if (tempBuf == NULL) {
+    char *tempBuf = new char[fileSize];
+    if (tempBuf == nullptr) {
         fclose(fp);
         return DERR_OUT_OF_MEMORY;
     }
     size_t readSize = fread(tempBuf, 1, fileSize, fp);
     if (readSize <= 0) {
-        free(tempBuf);
+        delete tempBuf;
         fclose(fp);
         return DERR_EMPTY_FILE;
     }
@@ -42,15 +41,15 @@ DEXPORT DError DFileRead(const char *path, char **buf, int *size)
     return DERR_OK;
 }
 
-DEXPORT DError DFileWrite(const char *path, const char *buf, int size)
+DEXPORT DError DFileWrite(const char *path, const char *buf, int32_t size)
 {
-    if (path == NULL || buf == NULL || size <= 0) {
+    if (path == nullptr || buf == nullptr || size <= 0) {
         return DERR_INVALID_ARGS;
     }
 
     FILE *fp = fopen(path, "ab+");
-    if (fp == NULL) {
-        DLog(DLOG_W, TAG, "open file failed, path is %s", path);
+    if (fp == nullptr) {
+        DLogW(TAG, "open file failed, path is %s", path);
         return DERR_INVALID_PATH;
     }
 
@@ -62,8 +61,8 @@ DEXPORT DError DFileWrite(const char *path, const char *buf, int size)
 DEXPORT void DFileFlush(const char *path)
 {
     FILE *fp = fopen(path, "wb+");
-    if (fp == NULL) {
-        DLog(DLOG_W, TAG, "flush file failed, path is %s", path);
+    if (fp == nullptr) {
+        DLogW(TAG, "flush file failed, path is %s", path);
         return;
     }
     fclose(fp);

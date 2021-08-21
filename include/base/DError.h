@@ -23,7 +23,7 @@ typedef enum
 extern "C" {
 #endif
 
-DEXPORT const char* DGetErrMsg(DError error);
+DEXPORT const char *DGetErrMsg(DError error);
 
 #ifdef __cplusplus
 }
