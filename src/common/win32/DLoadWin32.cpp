@@ -19,14 +19,14 @@ DEXPORT void* DLoadOpen(const char *path)
     return hDllLib;
 }
 
-DEXPORT void* DLoadGetSymbol(const void *hdl, const char *symbol)
+DEXPORT void* DLoadGetSymbol(const void *handle, const char *symbol)
 {
-    if (hdl == NULL || symbol == NULL) {
+    if (handle == NULL || symbol == NULL) {
         return NULL;
     }
 
-    FARPROC proc = GetProcAddress((HMODULE)hdl, symbol);
-    DLog(DLOG_D, TAG, "DLoadGetSymbol %p, %s and result is %p", hdl, symbol, proc);
+    FARPROC proc = GetProcAddress((HMODULE)handle, symbol);
+    DLog(DLOG_D, TAG, "DLoadGetSymbol %p, %s and result is %p", handle, symbol, proc);
     if (proc == NULL) {
         DMiscPrintError(DLOG_W);
     }

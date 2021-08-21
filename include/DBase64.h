@@ -21,4 +21,4 @@ DEXPORT DError DBase64UrlEncode(char **dst, size_t *dstLen, const char *src, siz
 }
 #endif
 
-#endif /* D_BASE64_H */
+#endif // D_BASE64_H

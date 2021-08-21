@@ -21,4 +21,4 @@ DEXPORT void DFileFlush(const char *path);
 }
 #endif
 
-#endif /* D_FILE_H */
+#endif // D_FILE_H

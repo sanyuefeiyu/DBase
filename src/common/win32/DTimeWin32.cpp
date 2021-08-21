@@ -4,7 +4,7 @@
 
 #pragma comment(lib,"winmm.lib")
 
-DEXPORT long long DTimeGetTick()
+DEXPORT int64_t DTimeGetTickMs()
 {
     return timeGetTime();
 }

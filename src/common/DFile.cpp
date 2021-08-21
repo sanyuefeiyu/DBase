@@ -27,7 +27,7 @@ DEXPORT DError DFileRead(const char *path, char **buf, int *size)
     char *tempBuf = (char*)malloc(fileSize);;
     if (tempBuf == NULL) {
         fclose(fp);
-        return DERR_NO_MEMORY;
+        return DERR_OUT_OF_MEMORY;
     }
     size_t readSize = fread(tempBuf, 1, fileSize, fp);
     if (readSize <= 0) {

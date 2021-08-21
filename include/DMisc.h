@@ -19,4 +19,4 @@ DEXPORT void DMiscPrintError(DLogLevel level);
 }
 #endif
 
-#endif /* D_MISC_H */
+#endif // D_MISC_H

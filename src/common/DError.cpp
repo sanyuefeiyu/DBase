@@ -9,6 +9,9 @@ DEXPORT const char* DGetErrMsg(DError errCode)
     case DERR_OK:
         errMsg = "ok";
         break;
+    case DERR_OUT_OF_MEMORY:
+        errMsg = "out of memory";
+        break;
     case DERR_INVALID_ARGS:
         errMsg = "invalid arguments";
         break;
@@ -18,11 +21,8 @@ DEXPORT const char* DGetErrMsg(DError errCode)
     case DERR_EMPTY_FILE:
         errMsg = "empty file";
         break;
-    case DERR_NO_MEMORY:
-        errMsg = "no memory";
-        break;
-    case DERR_BAD_CONTENT_ENCODING:
-        errMsg = "bad content encoding";
+    case DERR_BAD_ENCODING:
+        errMsg = "bad encoding";
         break;
     case DERR_MAX:
         errMsg = "max error";

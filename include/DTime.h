@@ -6,16 +6,17 @@
 #ifndef D_TIME_H
 #define D_TIME_H
 
+#include <stdint.h>
 #include "DExport.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-DEXPORT long long DTimeGetTick();
+DEXPORT int64_t DTimeGetTickMs();
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* D_TIME_H */
+#endif // D_TIME_H

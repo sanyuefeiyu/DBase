@@ -68,7 +68,7 @@ DEXPORT DError DBase64Decode(unsigned char **dst, size_t *dstLen, const char *sr
     //Check the length of the input string is valid
     size_t srcLen = strlen(src);
     if (!srcLen || srcLen % 4) {
-        return DERR_BAD_CONTENT_ENCODING;
+        return DERR_BAD_ENCODING;
     }
 
     //Find the position of any = padding characters
@@ -88,7 +88,7 @@ DEXPORT DError DBase64Decode(unsigned char **dst, size_t *dstLen, const char *sr
 
     //Check the = padding characters weren't part way through the input
     if (length + padding != srcLen) {
-        return DERR_BAD_CONTENT_ENCODING;
+        return DERR_BAD_ENCODING;
     }
 
     //Calculate the number of quantums
@@ -100,7 +100,7 @@ DEXPORT DError DBase64Decode(unsigned char **dst, size_t *dstLen, const char *sr
     //Allocate our buffer including room for a zero terminator
     unsigned char *newStr = (unsigned char*)malloc(rawLen + 1);
     if (!newStr) {
-        return DERR_NO_MEMORY;
+        return DERR_OUT_OF_MEMORY;
     }
 
     unsigned char *pos = newStr;
@@ -110,7 +110,7 @@ DEXPORT DError DBase64Decode(unsigned char **dst, size_t *dstLen, const char *sr
         size_t result = DecodeQuantum(pos, src);
         if(!result) {
             free(newStr);
-            return DERR_BAD_CONTENT_ENCODING;
+            return DERR_BAD_ENCODING;
         }
 
         pos += result;
@@ -141,7 +141,7 @@ static DError Base64Encode(const char *table64, const char *src, size_t srcLen, 
     char *base64data;
     base64data = output = (char*)malloc(srcLen * 4 / 3 + 4);
     if (!output) {
-        return  DERR_NO_MEMORY;
+        return  DERR_OUT_OF_MEMORY;
     }
 
     /*

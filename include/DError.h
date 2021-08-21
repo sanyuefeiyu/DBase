@@ -11,11 +11,11 @@
 typedef enum
 {
     DERR_OK = 0,
+    DERR_OUT_OF_MEMORY,
     DERR_INVALID_ARGS,
     DERR_INVALID_PATH,
     DERR_EMPTY_FILE,
-    DERR_NO_MEMORY,
-    DERR_BAD_CONTENT_ENCODING,
+    DERR_BAD_ENCODING,
     DERR_MAX
 } DError;
 
@@ -29,4 +29,4 @@ DEXPORT const char* DGetErrMsg(DError error);
 }
 #endif
 
-#endif /* D_ERROR_H */
+#endif // D_ERROR_H

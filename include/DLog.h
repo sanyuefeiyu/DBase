@@ -48,4 +48,4 @@ DEXPORT void DLogSetOutputPath(const char *path);
 #define DLogE(tag, format, arg ...)     DLog(DLOG_E, tag, format, ##arg)
 #endif
 
-#endif /* D_LOG_H */
+#endif // D_LOG_H

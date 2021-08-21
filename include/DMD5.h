@@ -26,4 +26,4 @@ DEXPORT void DMD5SumFile(unsigned char *dst, const char *filePath);
 }
 #endif
 
-#endif /* D_MD5_H */
+#endif // D_MD5_H

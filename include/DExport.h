@@ -14,4 +14,4 @@
     #define DEXPORT
 #endif
 
-#endif /* D_EXPORT_H */
+#endif // D_EXPORT_H

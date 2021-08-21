@@ -13,11 +13,11 @@ extern "C" {
 #endif
 
 DEXPORT void* DLoadOpen(const char *path);
-DEXPORT void* DLoadGetSymbol(const void *hdl, const char *symbol);
-DEXPORT void DLoadClose(const void *hdl);
+DEXPORT void* DLoadGetSymbol(const void *handle, const char *symbol);
+DEXPORT void DLoadClose(const void *handle);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* D_LOAD_H */
+#endif // D_LOAD_H
