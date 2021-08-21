@@ -34,34 +34,19 @@
     <Filter Include="src\alogrithm\base64">
       <UniqueIdentifier>{8a36a71e-e62b-43bb-95f3-2f85078132ad}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\base">
+      <UniqueIdentifier>{fb24ff0f-cdea-4bcc-ae04-a3a7a1f153a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\utils">
+      <UniqueIdentifier>{c4f1eeb6-b640-47c4-b4dd-3f1cb46b340f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\include\DExport.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\DFile.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\DLoad.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\DLog.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\DMisc.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\DTime.h">
-      <Filter>include</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\common\DCommon.h">
       <Filter>src\common</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\common\DLogCommon.h">
       <Filter>src\common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\DMD5.h">
-      <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\alogrithm\safty\md5\cifs\auth_common.h">
       <Filter>src\alogrithm\safty\md5\cifs</Filter>
@@ -87,13 +72,34 @@
     <ClInclude Include="..\..\src\alogrithm\safty\md5\cifs\platform\default\platform.h">
       <Filter>src\alogrithm\safty\md5\cifs\platform\default</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\DBase64.h">
-      <Filter>include</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\common\DStd.h">
       <Filter>src\common</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\DError.h">
+    <ClInclude Include="..\..\include\base\DError.h">
+      <Filter>include\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\base\DFile.h">
+      <Filter>include\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\base\DLog.h">
+      <Filter>include\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\base\DMisc.h">
+      <Filter>include\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\base\DTime.h">
+      <Filter>include\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\utils\DBase64.h">
+      <Filter>include\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\utils\DLoad.h">
+      <Filter>include\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\utils\DMD5.h">
+      <Filter>include\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\DExport.h">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>

@@ -11,15 +11,15 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\include\DBase64.h" />
-    <ClInclude Include="..\..\include\DError.h" />
+    <ClInclude Include="..\..\include\base\DError.h" />
+    <ClInclude Include="..\..\include\base\DFile.h" />
+    <ClInclude Include="..\..\include\base\DLog.h" />
+    <ClInclude Include="..\..\include\base\DMisc.h" />
+    <ClInclude Include="..\..\include\base\DTime.h" />
     <ClInclude Include="..\..\include\DExport.h" />
-    <ClInclude Include="..\..\include\DFile.h" />
-    <ClInclude Include="..\..\include\DLoad.h" />
-    <ClInclude Include="..\..\include\DLog.h" />
-    <ClInclude Include="..\..\include\DMD5.h" />
-    <ClInclude Include="..\..\include\DMisc.h" />
-    <ClInclude Include="..\..\include\DTime.h" />
+    <ClInclude Include="..\..\include\utils\DBase64.h" />
+    <ClInclude Include="..\..\include\utils\DLoad.h" />
+    <ClInclude Include="..\..\include\utils\DMD5.h" />
     <ClInclude Include="..\..\src\alogrithm\safty\md5\cifs\auth_common.h" />
     <ClInclude Include="..\..\src\alogrithm\safty\md5\cifs\cifs_block.h" />
     <ClInclude Include="..\..\src\alogrithm\safty\md5\cifs\cifs_common.h" />
@@ -86,7 +86,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;DBASE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir)\..\..\include\;$(ProjectDir)\..\..\src\common\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\..\..\include\;$(ProjectDir)\..\..\include\base;$(ProjectDir)\..\..\include\utils;$(ProjectDir)\..\..\src\common\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -102,7 +102,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;DBASE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir)\..\..\include\;$(ProjectDir)\..\..\src\common\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\..\..\include\;$(ProjectDir)\..\..\include\base;$(ProjectDir)\..\..\include\utils;$(ProjectDir)\..\..\src\common\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
