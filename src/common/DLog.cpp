@@ -5,7 +5,7 @@
 #include "DLogInternal.h"
 #include "DLog.h"
 
-extern void DLogOutput(DLogMode logMode, DLogLevel level, const char *tag, const char *buf);
+extern void DLogOutputByOs(DLogMode logMode, DLogLevel level, const char *tag, const char *buf);
 
 static DLogLevel gLogOutputlevel = DLOG_D;
 static DLogMode gLogMode = DLOG_CONSOLE;
@@ -34,12 +34,12 @@ DEXPORT void DLog(DLogLevel level, const char *tag, const char *format, ...)
     char buf[LOG_BUF_SIZE];
     va_list ap;
     va_start(ap, format);
-    int size = vsnprintf(buf, LOG_BUF_SIZE, format, ap);
+    int size = vsnprintf_s(buf, LOG_BUF_SIZE, format, ap);
     va_end(ap);
 
     if (size <= 0) {
         return;
     }
 
-    DLogOutput(gLogMode, level, tag, buf);
+    DLogOutputByOs(gLogMode, level, tag, buf);
 }

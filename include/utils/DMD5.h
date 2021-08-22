@@ -20,7 +20,7 @@ DEXPORT void DMD5CloseCtx(DMD5Ctx *ctx, unsigned char *dst);
 DEXPORT void DMD5ReleaseCtx(DMD5Ctx **ctx);
 
 DEXPORT void DMD5Sum(unsigned char *dst, const unsigned char *src, const int32_t len);
-DEXPORT void DMD5SumFile(unsigned char *dst, const char *filePath);
+DEXPORT void DMD5SumFile(unsigned char *dst, const char *path);
 
 #ifdef __cplusplus
 }

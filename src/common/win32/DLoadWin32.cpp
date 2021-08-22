@@ -13,7 +13,7 @@ DEXPORT void *DLoadOpen(const char *path)
     HMODULE hDllLib = LoadLibrary(path);
     DLogD(TAG, "DLoadOpen %s and result is %p", path, hDllLib);
     if (hDllLib == nullptr) {
-        DMiscPrintError(DLOG_W);
+        DPrintOsError(DLOG_W);
     }
 
     return hDllLib;
@@ -28,7 +28,7 @@ DEXPORT void *DLoadGetSymbol(const void *handle, const char *symbol)
     FARPROC proc = GetProcAddress((HMODULE)handle, symbol);
     DLogD(TAG, "DLoadGetSymbol %p, %s and result is %p", handle, symbol, proc);
     if (proc == nullptr) {
-        DMiscPrintError(DLOG_W);
+        DPrintOsError(DLOG_W);
     }
 
     return proc;

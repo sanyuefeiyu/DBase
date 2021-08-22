@@ -6,9 +6,9 @@
 #ifndef D_LOG_COMMON_H
 #define D_LOG_COMMON_H
 
-#define LOG_BUF_SIZE        2048
+#define LOG_BUF_SIZE        (2*1024)
 #define LOG_PATH_LENGTH     1024
 
-static const char *gLogLevelDes[] = {"Debug", "Info", "Warn", "Error"};
+static const char *gLogLevelDes[] = { "Debug", "Info", "Warn", "Error" };
 
-#endif /* D_LOG_COMMON_H */
+#endif // D_LOG_COMMON_H

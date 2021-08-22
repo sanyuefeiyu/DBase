@@ -13,7 +13,8 @@
 extern "C" {
 #endif
 
-DEXPORT void DMiscPrintError(DLogLevel level);
+DEXPORT void DPrintOsError(DLogLevel level);
+DEXPORT void DPrintOsErrorByError(DLogLevel level, errno_t errorCode);
 
 #ifdef __cplusplus
 }

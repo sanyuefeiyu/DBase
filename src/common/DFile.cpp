@@ -1,5 +1,6 @@
 #include <cstdio>
 #include "DCommon.h"
+#include "DMisc.h"
 #include "DLog.h"
 #include "DFile.h"
 
@@ -9,9 +10,11 @@ DEXPORT DError DFileRead(const char *path, char **buf, int32_t *size)
         return DERR_INVALID_ARGS;
     }
 
-    FILE *fp = fopen(path, "rb+");
-    if (fp == nullptr) {
-        DLogW(TAG, "open file failed, path is %s", path);
+    FILE *fp = nullptr;
+    errno_t errorCode = fopen_s(&fp, path, "rb+");
+    if (errorCode != 0 || fp == nullptr) {
+        DLogW(TAG, "%s open file failed, path: %s, %d", __FUNCTION__, path, errorCode);
+        DPrintOsErrorByError(DLOG_W, errorCode);
         return DERR_INVALID_PATH;
     }
 
@@ -47,9 +50,11 @@ DEXPORT DError DFileWrite(const char *path, const char *buf, int32_t size)
         return DERR_INVALID_ARGS;
     }
 
-    FILE *fp = fopen(path, "ab+");
-    if (fp == nullptr) {
-        DLogW(TAG, "open file failed, path is %s", path);
+    FILE *fp = nullptr;
+    errno_t errorCode = fopen_s(&fp, path, "ab+");
+    if (errorCode != 0 || fp == nullptr) {
+        DLogW(TAG, "%s open file failed, path: %s, %d", __FUNCTION__, path, errorCode);
+        DPrintOsErrorByError(DLOG_W, errorCode);
         return DERR_INVALID_PATH;
     }
 
@@ -60,9 +65,11 @@ DEXPORT DError DFileWrite(const char *path, const char *buf, int32_t size)
 
 DEXPORT void DFileFlush(const char *path)
 {
-    FILE *fp = fopen(path, "wb+");
-    if (fp == nullptr) {
-        DLogW(TAG, "flush file failed, path is %s", path);
+    FILE *fp = nullptr;
+    errno_t errorCode = fopen_s(&fp, path, "wb+");
+    if (errorCode != 0 || fp == nullptr) {
+        DLogW(TAG, "%s flush file failed, path: %s, %d", __FUNCTION__, path, errorCode);
+        DPrintOsErrorByError(DLOG_W, errorCode);
         return;
     }
     fclose(fp);

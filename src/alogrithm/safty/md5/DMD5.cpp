@@ -5,6 +5,7 @@ extern "C" {
 }
 
 #include "DCommon.h"
+#include "DMisc.h"
 #include "DLog.h"
 #include "DMD5.h"
 
@@ -69,27 +70,29 @@ DEXPORT void DMD5Sum(unsigned char *dst, const unsigned char *src, const int len
     auth_md5Sum(dst, src, len);
 }
 
-DEXPORT void DMD5SumFile(unsigned char *dst, const char *filePath)
+DEXPORT void DMD5SumFile(unsigned char *dst, const char *path)
 {
     long fileSize = 0;
     long readSize = 0;
     unsigned char src[READ_SIZE];
     DMD5Ctx *ctx = nullptr;
 
-    if (dst == nullptr || filePath == nullptr) {
+    if (dst == nullptr || path == nullptr) {
         return;
     }
 
-    FILE *fp = fopen(filePath, "rb");
-    if (fp == nullptr) {
-        DLogW(TAG, "open file failed, filePath=[%s]", filePath);
+    FILE *fp = nullptr;
+    errno_t errorCode = fopen_s(&fp, path, "rb");
+    if (errorCode != 0 || fp == nullptr) {
+        DLogW(TAG, "open file failed, path: %s, %d", path, errorCode);
+        DPrintOsErrorByError(DLOG_W, errorCode);
         return;
     }
     fseek(fp, 0, SEEK_END);
     fileSize = ftell(fp);
     fseek(fp, 0, SEEK_SET);
     if (fileSize <= 0) {
-        DLogW(TAG, "file size is 0, filePath=[%s]", filePath);
+        DLogW(TAG, "file size is 0, path: s", path);
         fclose(fp);
         return;
     }
